@@ -26,12 +26,20 @@
         <activity
             android:name=".RegistrationActivity"
             android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name=".KnowledgeListActivity"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity android:name=".KnowledgeDetailActivity" android:exported="false" />
+        <!-- 其他 Activity 保持不变，但要去掉重复的 LAUNCHER -->
 
     </application>
 

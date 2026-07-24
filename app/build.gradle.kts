@@ -1,14 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
     namespace = "com.example.androidknowledgechecklist"
-    compileSdk {
-        version = release(37) {
-            minorApiLevel = 1
-        }
-    }
+
+    // ✅ 修复：compileSdk 必须是纯数字
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.example.androidknowledgechecklist"
@@ -22,14 +22,20 @@ android {
 
     buildTypes {
         release {
-            optimization {
-                enable = false
-            }
+            // ✅ 修复：混淆开关的标准写法
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"
     }
 }
 
